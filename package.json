@@ -1,0 +1,22 @@
+{
+  "name": "random-episode-server",
+  "version": "1.0.0",
+  "description": "server for my random-episode-picker app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjrpayne/random-episode-server.git"
+  },
+  "author": "jj payne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjrpayne/random-episode-server/issues"
+  },
+  "homepage": "https://github.com/jjrpayne/random-episode-server#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
