@@ -1,2 +1,5 @@
 # config vars
 .env
+
+# vim swap files
+*.swp
