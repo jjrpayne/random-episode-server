@@ -38,7 +38,7 @@ app.get('/get_hostname', (req, res) => {
 	res.send(req.hostname)
 });
 
-app.get('/get_from_omdb', cors(corsOptions[option]), (req, res) => {
+app.get('/get_from_omdb', (req, res) => {
 //	console.log('Production mode = ', production);
 	var params = req.query;
 	params["apikey"] = api_key;
