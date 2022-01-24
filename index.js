@@ -39,7 +39,7 @@ app.get('/get_hostname', (req, res) => {
 });
 
 app.get('/get_from_omdb', cors(corsOptions[option]), (req, res) => {
-	console.log('Production mode = ', production);
+//	console.log('Production mode = ', production);
 	var params = req.query;
 	params["apikey"] = api_key;
 	// console.log(params);
@@ -53,12 +53,12 @@ app.get('/get_from_omdb', cors(corsOptions[option]), (req, res) => {
 });
 
 app.listen(port, () => {
-	/*
+	
 	console.log(production);
 	console.log(typeof(production));
 	console.log(option);
 	console.log(cors(corsOptions[option]));
 	console.log(corsOptions[option]);
-	*/
+
 	console.log(`Listening on port ${port}`);
 })
