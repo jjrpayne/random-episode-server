@@ -3,3 +3,7 @@
 
 # vim swap files
 *.swp
+
+# other
+node_modules
+functions
