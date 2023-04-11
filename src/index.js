@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const app = express();
-const got = require('got');
+
 const {pipeline} = require('stream');
+const serverless = require('serverless-http');
 
 require('dotenv').config();
 
@@ -13,6 +13,10 @@ const web_app = process.env.WEBAPP;
 const omdb_api = "https://omdbapi.com";
 
 const client_url = process.env.CLIENT_URL;
+
+const app = express();
+const got = require('got');
+const router = express.Router();
 
 var corsOptions = [
 	{
@@ -30,15 +34,15 @@ if (production == true){
 	option = 1;
 }
 
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
 	res.send('welcome to the random episode server :)')
 });
 
-app.get('/get_hostname', (req, res) => {
+router.get('/get_hostname', (req, res) => {
 	res.send(req.hostname)
 });
 
-app.get('/get_from_omdb', (req, res) => {
+router.get('/get_from_omdb', (req, res) => {
 //	console.log('Production mode = ', production);
 	var params = req.query;
 	params["apikey"] = api_key;
@@ -52,13 +56,6 @@ app.get('/get_from_omdb', (req, res) => {
 	});
 });
 
-app.listen(port, () => {
-	
-	console.log(production);
-	console.log(typeof(production));
-	console.log(option);
-	console.log(cors(corsOptions[option]));
-	console.log(corsOptions[option]);
+app.use('/.netlify/functions/api', router);
 
-	console.log(`Listening on port ${port}`);
-})
+module.exports.handler = serverless(app);
